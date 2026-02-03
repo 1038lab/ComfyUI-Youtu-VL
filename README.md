@@ -3,13 +3,12 @@
 ComfyUI custom nodes for [Tencent Youtu-VL](https://huggingface.co/tencent/Youtu-VL-4B-Instruct) vision-language model.
 Youtu-VL is a lightweight yet powerful 4B parameter VLM with comprehensive vision-centric capabilities including visual grounding, segmentation, depth estimation, and pose estimation.
 
+![ComfyUI-Youtu-VL](example_workflows/Youyu-VL.jpg)
+[Workflow](example_workflows/Youyu-VL.json)
+
 [![GitHub License](https://img.shields.io/github/license/1038lab/ComfyUI-Youtu-VL)](https://github.com/1038lab/ComfyUI-Youtu-VL/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
 [![ComfyUI](https://img.shields.io/badge/ComfyUI-Custom_Node-green)](https://github.com/comfyanonymous/ComfyUI)
-
-> **Developed by 1038lab**
-> 
-> This extension seamlessly integrates Youtu-VL into your ComfyUI workflows. It supports both standard high-precision inference and efficient GGUF quantization.
 
 ---
 
