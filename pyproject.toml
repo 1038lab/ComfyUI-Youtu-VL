@@ -1,0 +1,24 @@
+[project]
+name = "comfyui-youtu-vl"
+version = "0.0.1"
+description = "ComfyUI custom nodes for Tencent Youtu-VL vision-language model"
+license = {file = "LICENSE"}
+
+dependencies = [
+    "transformers>=4.56.0",
+    "torch",
+    "accelerate",
+    "pillow",
+    "torchvision",
+    "opencv-python-headless",
+    "huggingface_hub",
+    "psutil",
+]
+
+[project.urls]
+Repository = "https://github.com/1038lab/ComfyUI-Youtu-VL"
+
+[tool.comfy]
+PublisherId = "1038lab"
+DisplayName = "ComfyUI-Youtu-VL"
+Icon = ""
