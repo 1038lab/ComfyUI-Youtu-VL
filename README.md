@@ -1,6 +1,6 @@
 # ComfyUI-Youtu-VL
 
-ComfyUI custom nodes for [Tencent Youtu-VL](https://huggingface.co/tencent/Youtu-VL-4B-Instruct) vision-language model.
+ComfyUI custom nodes for Tencent Youtu-VL vision-language model.
 Youtu-VL is a lightweight yet powerful 4B parameter VLM with comprehensive vision-centric capabilities including visual grounding, segmentation, depth estimation, and pose estimation.
 
 ![ComfyUI-Youtu-VL](example_workflows/Youyu-VL.jpg)
