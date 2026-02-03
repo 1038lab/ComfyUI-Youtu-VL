@@ -19,6 +19,6 @@ dependencies = [
 Repository = "https://github.com/1038lab/ComfyUI-Youtu-VL"
 
 [tool.comfy]
-PublisherId = "1038lab"
+PublisherId = "ailab"
 DisplayName = "ComfyUI-Youtu-VL"
 Icon = ""
