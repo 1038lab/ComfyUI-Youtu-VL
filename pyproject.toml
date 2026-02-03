@@ -1,6 +1,6 @@
 [project]
 name = "comfyui-youtu-vl"
-version = "0.0.1"
+version = "1.0.0"
 description = "ComfyUI custom nodes for Tencent Youtu-VL vision-language model"
 license = {file = "LICENSE"}
 
