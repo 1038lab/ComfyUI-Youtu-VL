@@ -1,0 +1,13 @@
+transformers>=4.56.0
+accelerate
+pillow
+torchvision
+opencv-python-headless
+huggingface_hub
+psutil
+
+# GGUF Node Requirements
+# llama-cpp-python
+
+# GGUF Node Optional Requirements
+# pydensecrf @ git+https://github.com/lucasb-eyer/pydensecrf.git
