@@ -1,94 +1,97 @@
 # ComfyUI-Youtu-VL
 
 ComfyUI custom nodes for [Tencent Youtu-VL](https://huggingface.co/tencent/Youtu-VL-4B-Instruct) vision-language model.
-
 Youtu-VL is a lightweight yet powerful 4B parameter VLM with comprehensive vision-centric capabilities including visual grounding, segmentation, depth estimation, and pose estimation.
 
-## Features
+[![GitHub License](https://img.shields.io/github/license/1038lab/ComfyUI-Youtu-VL)](https://github.com/1038lab/ComfyUI-Youtu-VL/blob/main/LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10+-blue)](https://www.python.org/)
+[![ComfyUI](https://img.shields.io/badge/ComfyUI-Custom_Node-green)](https://github.com/comfyanonymous/ComfyUI)
 
-| Node | Description |
-|------|-------------|
-| **YoutuVL** | Basic VLM chat for image understanding |
-| **YoutuVL (Advanced)** | Full parameter control for generation |
-| **YoutuVL (GGUF)** | GGUF quantized model for lower VRAM |
-| **YoutuVL (GGUF Advanced)** | GGUF with full parameter control |
-| **YoutuVL Segmentation** | Semantic/referring segmentation with mask output |
-| **YoutuVL Grounding** | Visual grounding with bounding boxes |
-| **YoutuVL Detection** | Object detection with labels |
-| **YoutuVL Depth** | Depth estimation with colormap visualization |
-| **YoutuVL Pose** | Human pose estimation with COCO keypoints |
+> **Developed by 1038lab**
+> 
+> This extension seamlessly integrates Youtu-VL into your ComfyUI workflows. It supports both standard high-precision inference and efficient GGUF quantization.
 
+---
 
-## Installation
+## ✨ Key Features
 
-### ComfyUI Manager (Recommended)
+- **🔥 Dual Engines**: Run with standard `transformers` (high precision) or `llama.cpp` (high speed/low VRAM).
+- **🚀 Efficient & Lightweight**: 
+  - Run **FP16/BF16** reference implementation.
+  - Or use **4-bit/8-bit GGUF** to run on consumer GPUs (6GB+ VRAM).
+- **🧠 Smart Vision Tasks**:
+  - **Detailed Captioning**: Generate rich, descriptive prompts for Stable Diffusion.
+  - **Tag Generation**: Auto-tag images for LoRA training.
+  - **OCR**: Extract text from images.
+  - **Visual QA**: Chat with your images.
+- **⚡ Zero-Config**: Models auto-download on first use.
 
-Search for `ComfyUI-Youtu-VL` in ComfyUI Manager and install.
+## 📦 Installation
 
-### Manual Installation
+### Method 1: ComfyUI Manager (Recommended)
+Search for `ComfyUI Youtu-VL` in the Manager (Publisher: **1038lab**) and click **Install**.
+
+### Method 2: Manual Install
+Clone this repo into your `custom_nodes` folder:
 
 ```bash
-cd ComfyUI/custom_nodes
+cd ComfyUI/custom_nodes/
 git clone https://github.com/1038lab/ComfyUI-Youtu-VL.git
 cd ComfyUI-Youtu-VL
 pip install -r requirements.txt
 ```
 
-## Models
+### 💡 Enable GGUF Support (Optional)
+To use the GGUF nodes for faster inference:
 
-Models are automatically downloaded on first use to `ComfyUI/models/LLM/Youtu-VL/`.
+```bash
+pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
+```
+*(Replace `cu121` with your CUDA version, e.g., `cu118` or `metal` for macOS)*
 
-| Model | Size | VRAM (FP16) | VRAM (8-bit) | VRAM (4-bit) |
-|-------|------|-------------|--------------|--------------|
-| Youtu-VL-4B-Instruct | 4B | ~8 GB | ~5 GB | ~3 GB |
+---
 
-### GGUF Support
+## 🧩 Node Options
 
-GGUF quantized models are also available:
-- `Youtu-VL-4B-Instruct-GGUF-Q4` - 4-bit quantized
-- `Youtu-VL-4B-Instruct-GGUF-Q8` - 8-bit quantized
+### 1️⃣ Youtu-VL (Standard)
+*Best for precision and research.*
+- **Model**: Automatic download from HuggingFace (`models/LLM/Youtu-VL`).
+- **Quantization**: Built-in 8-bit/4-bit loading (via BitsAndBytes).
+- **Attention**: Supports Flash Attention 2 for speed.
 
-## Requirements
+### 2️⃣ Youtu-VL (GGUF)
+*Best for speed and daily usage.*
+- **Model**: Loads `.gguf` files (Q4_K_M, Q8_0, F16).
+- **Speed**: Extremely fast CPU/GPU hybrid inference.
+- **VRAM**: Adjustable GPU offload layers.
 
-- Python >= 3.10
-- PyTorch >= 2.0
-- transformers >= 4.56.0, <= 4.57.1
-- CUDA GPU recommended (8GB+ VRAM for FP16)
+---
 
-## Usage
+## 🎮 Capabilities & Presets
 
-### Basic Chat
+The nodes include smart presets (in `config.json`) to automate common tasks:
 
-1. Add **YoutuVL** node
-2. Connect an image
-3. Select a preset prompt or enter custom prompt
-4. Execute to get text response
+| Preset Mode | Description |
+| :--- | :--- |
+| **📝 Detailed Description** | Writes a full paragraph describing lighting, composition, and subjects. |
+| **🔍 Analyze Elements** | Lists key objects and layout details. |
+| **🏷️ Generate Tags** | Creates comma-separated tags (Danbooru style). |
+| **📄 OCR Text** | Reads and outputs visible text. |
+| **🎨 Art Style** | Identifies medium, artist style, and technique. |
+| **❓ Visual QA** | Ask custom questions like "What color is the..." |
 
-### Segmentation
+---
 
-1. Add **YoutuVL Segmentation** node
-2. Connect an image
-3. Enter prompt describing the object to segment
-4. Get segmented image and mask
+## 🛠 Troubleshooting
 
-### Object Detection
+- **GGUF Node missing?** -> Make sure `llama-cpp-python` is installed successfully.
+- **Out of Memory?** -> Switch to the **GGUF** node and select a **Q4** or **Q5** model.
+- **Experimental Nodes**: Segmentation, Depth, and Pose nodes are currently in the `Beta/` folder.
 
-1. Add **YoutuVL Detection** or **YoutuVL Grounding** node
-2. Connect an image
-3. Get annotated image with bounding boxes
+---
 
-## License
+## 📄 License
 
-- **Code**: GPL-3.0
-- **Youtu-VL Model**: Apache-2.0
-
-## Credits
-
-- [Tencent Youtu Lab](https://github.com/TencentCloudADP/youtu-vl) - Youtu-VL model
-- [1038lab](https://github.com/1038lab) - ComfyUI integration
-
-## Links
-
-- [Youtu-VL Model](https://huggingface.co/tencent/Youtu-VL-4B-Instruct)
-- [Youtu-VL GGUF](https://huggingface.co/tencent/Youtu-VL-4B-Instruct-GGUF)
-- [Technical Report](https://arxiv.org/abs/2601.19798)
+- **Extension Code**: Licensed under the **GPL-3.0 License**. Copyright © 2024 **1038lab**.
+- **Youtu-VL Model**: Licensed under the **License Term of Youtu-VL** by Tencent.
+  - *Important: The model is NOT intended for use within the European Union and is subject to specific usage terms.*

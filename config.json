@@ -1,0 +1,50 @@
+{
+    "_preset_prompts": [
+        "🖼️ Describe Image",
+        "📝 Detailed Description",
+        "🔍 Analyze Elements",
+        "🏷️ Generate Tags",
+        "📄 OCR Text",
+        "🎨 Art Style Analysis"
+    ],
+    "_system_prompts": {
+        "🖼️ Describe Image": "Describe this image in a single natural sentence.",
+        "📝 Detailed Description": "Provide a comprehensive description of the image, covering the main subject, background, lighting, colors, and composition.",
+        "🔍 Analyze Elements": "List the key objects and meaningful details visible in the image.",
+        "🏷️ Generate Tags": "Generate a list of descriptive tags for this image, separated by commas.",
+        "📄 OCR Text": "Transcribe all visible text in the image exactly as it appears.",
+        "🎨 Art Style Analysis": "Analyze the artistic style, medium, and technique used in this image."
+    },
+    "Youtu-VL-4B-Instruct": {
+        "repo_id": "tencent/Youtu-VL-4B-Instruct",
+        "default": true,
+        "quantized": false,
+        "vram_requirement": {
+            "full": 8.0,
+            "8bit": 5.0,
+            "4bit": 3.0
+        }
+    },
+    "Youtu-VL-4B-Instruct-GGUF-Q8": {
+        "repo_id": "tencent/Youtu-VL-4B-Instruct-GGUF",
+        "filename": "Youtu-VL-4B-Instruct-Q8_0.gguf",
+        "mmproj": "mmproj-Youtu-VL-4b-Instruct-BF16.gguf",
+        "default": true,
+        "quantized": true,
+        "is_gguf": true,
+        "vram_requirement": {
+            "full": 5.5
+        }
+    },
+    "Youtu-VL-4B-Instruct-GGUF-F16": {
+        "repo_id": "tencent/Youtu-VL-4B-Instruct-GGUF",
+        "filename": "Youtu-VL-4B-Instruct-F16.gguf",
+        "mmproj": "mmproj-Youtu-VL-4b-Instruct-BF16.gguf",
+        "default": false,
+        "quantized": true,
+        "is_gguf": true,
+        "vram_requirement": {
+            "full": 10.0
+        }
+    }
+}

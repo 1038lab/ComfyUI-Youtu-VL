@@ -1,6 +1,27 @@
 from pathlib import Path
 import sys
+import types
 import importlib.util
+
+# Mock pydensecrf globally for this extension to avoid installation issues
+if "pydensecrf" not in sys.modules:
+    # 1. Create top-level package
+    p = types.ModuleType("pydensecrf")
+    p.__path__ = []
+    sys.modules["pydensecrf"] = p
+    
+    # 2. Create pydensecrf.utils sub-module
+    u = types.ModuleType("pydensecrf.utils")
+    u.unary_from_softmax = lambda *args, **kwargs: None
+    u.unary_from_labels = lambda *args, **kwargs: None
+    sys.modules["pydensecrf.utils"] = u
+    p.utils = u
+    
+    # 3. Create pydensecrf.densecrf sub-module
+    d = types.ModuleType("pydensecrf.densecrf")
+    d.DenseCRF2D = type("DenseCRF2D", (), {"addPairwiseGaussian": lambda *a: None, "addPairwiseBilateral": lambda *a: None, "setUnaryEnergy": lambda *a: None, "inference": lambda *a: [0], "map": lambda *a: [0]})
+    sys.modules["pydensecrf.densecrf"] = d
+    p.densecrf = d
 
 __version__ = "1.0.0"
 
